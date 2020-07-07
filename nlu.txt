@@ -1,0 +1,198 @@
+% Farkhad Gapparov 500718721, Sec 052
+% Mohib Abdullah 500715782
+Part 3 - queries for database only
+queries here mostly just checked if fact were stated correctly in database
+
+?- beside(ninth, tenth).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- beside(tenth, ninth).
+Yes (0.00s cpu)
+
+?- beside(first, second).
+No (0.00s cpu)
+
+?- beside(first, fourth).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- above(second, fourth).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- above(third, fourth).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- leftOf(first, tenth).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+After going through tracing the solution the reason for 2 Yes answers is that it I have too many rules and it eventually stumbles
+on the same solution two times if one of the blocks is on some other block rather than area. It is weird and hard to trace.
+?- leftOf(third, tenth).
+Yes (0.00s cpu, solution 1, maybe more)
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+same thing as with leftOf
+?- rightOf(tenth, third).
+Yes (0.00s cpu, solution 1, maybe more)
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+?- rightOf(tenth, first).
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+
+Part 6 - testing NPs
+
+Assignment tests:
+
+?- what([a, huge, blue, wedge, on, the, table], B).
+B = fifth
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([any, small, green, block], B).
+B = sixth
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([any, yellow, pyramid, on, a, big, cube], B).
+B = ninth
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([a, cube, beside, the, orange, wedge], B).
+B = third
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([any, cube, below, a, pink, wedge, on, a, large, red, block], B).
+B = third
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([a, green, wedge, above, a, blue, block, beside, the, small, red, pyramid], B).
+B = sixth
+Yes (0.00s cpu, solution 1, maybe more)
+B = sixth
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+?- what([the, pink, medium, wedge, above, a, block, beside, a, medium, blue, cube], B).
+B = eighth
+Yes (0.00s cpu, solution 1, maybe more)
+B = eighth
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+My tests:
+
+?- what([any, pyramid, left, of, grey, cube], B).
+B = ninth
+Yes (0.02s cpu, solution 1, maybe more)
+B = tenth
+Yes (0.02s cpu, solution 2, maybe more)
+B = eleventh
+Yes (0.02s cpu, solution 3, maybe more)
+B = twelfth
+Yes (0.02s cpu, solution 4, maybe more)
+No (0.02s cpu)
+
+?- what([a, wedge, beside, of, red, cube], B).
+B = sixth
+Yes (0.00s cpu, solution 1, maybe more)
+B = seventh
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+% too many rules led to this
+?- what([a, purple, pyramid, left, of, green, wedge], B).
+B = twelfth
+Yes (0.00s cpu, solution 1, maybe more)
+B = twelfth
+Yes (0.00s cpu, solution 2, maybe more)
+B = twelfth
+Yes (0.02s cpu, solution 3, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 4, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 5, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 6, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 7, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 8, maybe more)
+B = twelfth
+Yes (0.03s cpu, solution 9, maybe more)
+No (0.03s cpu)
+
+?- what([an, average, cube, right, of, yellow, pyramid], B).
+B = second
+Yes (0.02s cpu, solution 1, maybe more)
+B = second
+Yes (0.02s cpu, solution 2, maybe more)
+B = second
+Yes (0.02s cpu, solution 3, maybe more)
+B = second
+Yes (0.02s cpu, solution 4, maybe more)
+B = second
+Yes (0.02s cpu, solution 5, maybe more)
+B = second
+Yes (0.02s cpu, solution 6, maybe more)
+B = second
+Yes (0.02s cpu, solution 7, maybe more)
+B = thirteenth
+Yes (0.02s cpu, solution 8, maybe more)
+No (0.02s cpu)
+
+?- what([a, blue, wedge, left, of, miniscule, cube], B).
+B = fifth
+Yes (0.00s cpu, solution 1, maybe more)
+B = fifth
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
+
+?- what([a, purple, pyramid, right, of, green, cube], B).
+B = twelfth
+Yes (0.00s cpu, solution 1, maybe more)
+B = twelfth
+Yes (0.00s cpu, solution 2, maybe more)
+B = twelfth
+Yes (0.00s cpu, solution 3, maybe more)
+B = twelfth
+Yes (0.00s cpu, solution 4, maybe more)
+No (0.02s cpu)
+
+?- what([a, orange, wedge, beside, of, average, wedge], B).
+B = seventh
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([the, medium, black, pyramid, beside, a, little, cube], B).
+B = eleventh
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+?- what([the, medium, pink, wedge, right, of, blue, wedge], B).
+B = eighth
+Yes (0.00s cpu, solution 1, maybe more)
+B = eighth
+Yes (0.00s cpu, solution 2, maybe more)
+B = eighth
+Yes (0.00s cpu, solution 3, maybe more)
+B = eighth
+Yes (0.00s cpu, solution 4, maybe more)
+No (0.00s cpu)
+
+?- what([the, miniscule, grey, cube, below, a, little, wedge, beside, a, small, pyramid], B).
+B = fourth
+Yes (0.00s cpu, solution 1, maybe more)
+B = fourth
+Yes (0.00s cpu, solution 2, maybe more)
+No (0.00s cpu)
