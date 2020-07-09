@@ -1,5 +1,3 @@
-% Farkhad Gapparov 500718721, Sec 052
-% Mohib Abdullah 500715782
 % Database 
 block(first). block(second).  block(third). block(fourth). block(fifth). block(sixth).
 block(seventh). block(eighth). block(ninth). block(tenth). block(eleventh). block(twelfth).
